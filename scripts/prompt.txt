@@ -1,0 +1,14 @@
+Analyze the {repo_name} repository to understand its structure, purpose, and functionality. Follow these steps to study the codebase:
+
+Read the README file to gain an overview of the project, its goals, and any setup instructions.
+Examine the repository structure to understand how the files and directories are organized.
+Identify the main entry point of the application (e.g., main.py, app.py, index.js) and start analyzing the code flow from there.
+Study the dependencies and libraries used in the project to understand the external tools and frameworks being utilized.
+Analyze the core functionality of the project by examining the key modules, classes, and functions.
+Look for any configuration files (e.g., config.py, .env) to understand how the project is configured and what settings are available.
+Investigate any tests or test directories to see how the project ensures code quality and handles different scenarios.
+Review any documentation or inline comments to gather insights into the codebase and its intended behavior.
+Identify any potential areas for improvement, optimization, or further exploration based on your analysis.
+Provide a summary of your findings, including the project's purpose, key features, and any notable observations or recommendations.
+Use the files and contents provided below to complete this analysis:
+

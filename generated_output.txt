@@ -1,0 +1,28 @@
+## Pull Request Review: #18 - added-api
+
+**Recommendation:** Reject
+
+**Rationale:** The pull request introduces a new endpoint for fetching a single lesson, but it lacks sufficient testing and includes potential code issues. 
+
+**Detailed Feedback:**
+
+**File: lib/api/lessons/lessons.controller.ts**
+
+- **Lines 60-73:** The `getSingle` method is introduced. The code could be improved by using a dedicated `LessonResponseDTO` instead of creating a new object with nested properties, which reduces readability. Additionally, the method should be documented using Swagger annotations (`@ApiOperation`, `@ApiResponse`, etc.) for clarity.
+- **Line 70:** This line may lead to a bug; consider revising. The `toObject()` method can return an incomplete object, which may result in unexpected behavior. Consider using `toJSON()` instead, which guarantees a full representation of the document.
+
+**File: lib/api/lessons/lessons.service.ts**
+
+- **Lines 47-64:** The `getSingle` method is introduced, but it lacks tests to ensure the correct functionality. Unit tests should be written for this method, covering scenarios with valid and invalid IDs.
+- **Line 61:** This line may lead to a bug; consider revising.  The `aggregate` method is not well-documented; consider adding comments explaining the purpose of each stage and its impact on the final result. 
+- **Line 64:** The `exec` method is not awaited, potentially leading to unhandled promise rejections. This line should be revised to `await aggregate.exec()` for proper error handling.
+
+**Overall, the pull request is not ready for acceptance due to the lack of tests and potential code issues. The following improvements are recommended:**
+
+1. **Add Unit Tests:**  Write comprehensive unit tests for the `getSingle` method in both the controller and service. This will ensure that the endpoint functions as intended and prevent future regressions.
+2. **Improve Code Readability:**  Use dedicated DTOs to represent response data instead of manually creating objects. This will improve code readability and maintainability.
+3. **Document the Code:**  Document the `getSingle` method with Swagger annotations, including API descriptions, parameters, and responses.
+4. **Address Potential Issues:**  Review the potential code issues identified in the comments and revise the code accordingly.
+5. **Refactor the Aggregate Query:**  Add comments to the `aggregate` method, clarifying the purpose of each stage. This will improve code maintainability and understanding. 
+
+By addressing these points, the pull request can be made ready for review and potentially accepted. 
